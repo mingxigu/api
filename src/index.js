@@ -1,11 +1,18 @@
 // index.js
-// This is the main entry point of our application
+// This is the main entry point of our application``
 
 const express = require('express');
 const { ApolloServer, gql } = require('apollo-server-express');
 
+require('dotenv').config();
+const db = require('./db');
+const models = require('./models');
+
 // Run the server on a port specified in our .env file or port 4000
 const port = process.env.PORT || 4000;
+
+// Store the DB_HOST value defiend in the .env file as a variable
+const DB_HOST = process.env.DB_HOST;
 
 // Temporary data to test API
 let notes = [
@@ -37,7 +44,9 @@ const typeDefs = gql`
 const resolvers = {
     Query: {
         hello: () => 'Hello World',
-        notes: () => notes,
+        notes: async () => {
+            return await models.Note.find();
+        },
         note: (parent, args) => {
             return notes.find(note => note.id === args.id);
         }
@@ -59,9 +68,12 @@ const resolvers = {
 
 const app = express();
 
+// Connect to the database
+db.connect(DB_HOST);
 
 
-app.get('/', (req, res) => res.send ('Hello World!'));
+// app.get('/', (req, res) => res.send ('Hello World!'));
+
 
 // Apollo Server setup
 const server = new ApolloServer({ typeDefs, resolvers });
