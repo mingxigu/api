@@ -7,7 +7,7 @@ module.exports = {
         mongoose.set('useNewUrlParser', true);
 
         // Use findOneAndUpdate() in place of findAndModify()
-        mongoose.set ('useFindAndModify', false);
+        mongoose.set('useFindAndModify', false);
 
         // Use the new server discovery and monitoring engine
         mongoose.set('useUnifiedTopology', true);
