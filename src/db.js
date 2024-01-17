@@ -13,6 +13,7 @@ module.exports = {
         mongoose.set('useUnifiedTopology', true);
 
         // Connect to the db
+        console.log('Connecting to DB...\nDB_HOST:', DB_HOST);
         mongoose.connect(DB_HOST);
 
         // Log an error if failed to connect
