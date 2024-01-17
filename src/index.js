@@ -10,7 +10,7 @@ const models = require('./models');
 // Run the server on a port specified in our .env file or port 4000
 const port = process.env.PORT || 4000;
 
-// Store the DB_HOST value defiend in the .env file as a variable
+// Store the DB_HOST value defined in the .env file as a variable
 const DB_HOST = process.env.DB_HOST;
 
 // Temporary data to test API

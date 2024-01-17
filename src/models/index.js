@@ -1,4 +1,11 @@
 const Note = require('./note');
-module.exports = {
+
+const models = {
     Note
 };
+
+module.exports = models;
+
+// module.exports = {
+//     Note
+// };
