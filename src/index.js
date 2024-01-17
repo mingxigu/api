@@ -46,19 +46,26 @@ const resolvers = {
         notes: async () => {
             return await models.Note.find();
         },
-        note: (parent, args) => {
-            return notes.find(note => note.id === args.id);
+        note: async (parent, args) => {
+            const note = await models.Note.findById(args.id);
+            return note;
         }
     },
     Mutation: {
-        newNote: (parent, args) => {
-            let noteValue = {
-                id: String(notes.length + 1),
+        // newNote: (parent, args) => {
+        //     let noteValue = {
+        //         id: String(notes.length + 1),
+        //         content: args.content,
+        //         author: 'Fred Johnson'
+        //     };
+        //     notes.push(noteValue);
+        //     return noteValue;
+        // }
+        newNote: async (parent, args) => {
+            return await models.Note.create({
                 content: args.content,
-                author: 'Fred Johnson'
-            };
-            notes.push(noteValue);
-            return noteValue;
+                author: 'MingXi Gu'
+            });
         }
     }
 };
