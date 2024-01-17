@@ -19,7 +19,7 @@ let notes = [
     { id: '1', content: 'This is a note', author: 'MingXi Gu'},
     { id: '2', content: 'This is a another note', author: 'Adelina Dobromir'}, 
     { id: '1', content: 'OMG, another note!', author: 'Sofia McVetty'}
-]
+];
 
 // Construct a schema using GraphQL schema language
 const typeDefs = gql`
